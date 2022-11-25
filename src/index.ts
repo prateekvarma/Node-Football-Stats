@@ -9,12 +9,18 @@ const matches = fs
         return row.split(',')
     });
 
+enum MatchResult {
+    HomeWin = 'H',
+    AwayWin = 'A',
+    Draw = 'D'
+};
+
 let manUnitedWins = 0; //checks how many games Man united won
 
 for (let match of matches) {
-    if(match[1] === 'Man United' && match[5] === 'H') { //H means home wins
+    if(match[1] === 'Man United' && match[5] === MatchResult.HomeWin) { //H means home wins
         manUnitedWins++;
-    } else if (match[2] === 'Man United' && match[5] === 'A'){ //A means away wins
+    } else if (match[2] === 'Man United' && match[5] === MatchResult.AwayWin){ //A means away wins
         manUnitedWins++;
     } 
 }

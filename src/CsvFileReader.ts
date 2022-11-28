@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { dateStringToDate } from './utils';
 
 export class CsvFileReader {
     data: string[][] = [];
@@ -13,6 +14,15 @@ export class CsvFileReader {
         .split('\n')
         .map((row: string): string[] => {
             return row.split(',')
+        })
+        .map((row: string[]): any => {
+            return [
+                dateStringToDate(row[0]), // Date
+                row[1], //team
+                row[2], //team
+                parseInt(row[3]), //matches
+                parseInt(row[4]), //matches
+            ];
         });
     }
 }

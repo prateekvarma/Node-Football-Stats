@@ -2,8 +2,11 @@ import { CsvFileReader } from "./CsvFileReader";
 import { dateStringToDate } from "./utils";
 import { MatchResult } from "./MatchResults";
 
-//below, this class is etending an abstract class
-export class MatchReader extends CsvFileReader {
+// Below, we're defining a tuple - accoding to each row for the CSV file
+type MatchData = [Date, string, string, number, number, MatchResult, string];
+
+//below, this class is etending an abstract class, passing a generic.
+export class MatchReader extends CsvFileReader<MatchData> {
     mapRow(row: string[]): MatchData {
         //below this converts all elements of this array into some or the other type.
         //each row is a row from the CSV file

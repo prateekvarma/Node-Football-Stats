@@ -10,15 +10,4 @@ const csvFileReader =  new CsvFileReader('football.csv');
 const matchReader = new MatchReader(csvFileReader);
 matchReader.load(); //now matchReader.matches() gives us the info we want
 
-
-let manUnitedWins = 0; //checks how many games Man united won
-
-for (let match of matchReader.matches) {
-    if(match[1] === 'Man United' && match[5] === MatchResult.HomeWin) { //H means home wins
-        manUnitedWins++;
-    } else if (match[2] === 'Man United' && match[5] === MatchResult.AwayWin){ //A means away wins
-        manUnitedWins++;
-    } 
-}
-
 console.log(`Man United won ${manUnitedWins} games`);
